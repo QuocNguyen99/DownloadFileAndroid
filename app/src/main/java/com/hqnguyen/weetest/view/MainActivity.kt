@@ -7,10 +7,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hqnguyen.weetest.adapter.MediaAdapter
-import com.hqnguyen.weetest.data.Media
 import com.hqnguyen.weetest.data.MediaRepository
-import com.hqnguyen.weetest.data.MediaViewModelFactory
-import com.hqnguyen.weetest.data.TypeMedia
 import com.hqnguyen.weetest.databinding.ActivityMainBinding
 import com.hqnguyen.weetest.network.MediaService
 
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         mediaViewModel.mediaListResponse.observe(this) {
             if (it.isNotEmpty()) {
                 adapterMedia?.setData(it)
-                adapterMedia?.notifyDataSetChanged()
             } else {
                 binding.tvNoItem.visibility = View.VISIBLE
                 binding.rcMedia.visibility = View.GONE

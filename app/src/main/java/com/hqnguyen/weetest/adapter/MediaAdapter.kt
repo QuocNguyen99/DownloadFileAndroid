@@ -26,14 +26,15 @@ class MediaAdapter(val context: Context) : RecyclerView.Adapter<MediaAdapter.Vie
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(media: Media) {
             binding.tvItem.text = media.fileName
-            Glide.with(context).load(media.url).placeholder(R.drawable.ic_downloading).into(binding.imgItem)
-            if (media.type == TypeMedia.VIDEO_MP3 ) {
+            Glide.with(context).load(media.url).placeholder(R.drawable.ic_downloading)
+                .into(binding.imgItem)
+            if (media.type == TypeMedia.VIDEO_MP3) {
                 binding.progress.visibility = View.VISIBLE
             }
 
-            if ( media.downloaded == StatusDownload.SUCCESS){
+            if (media.downloaded == StatusDownload.SUCCESS) {
                 binding.progress.visibility = View.GONE
-            }else if (media.downloaded == StatusDownload.FAIL){
+            } else if (media.downloaded == StatusDownload.FAIL) {
                 binding.progress.visibility = View.GONE
             }
         }
@@ -58,6 +59,8 @@ class MediaAdapter(val context: Context) : RecyclerView.Adapter<MediaAdapter.Vie
     }
 
     fun setData(newListMedia: List<Media>) {
-        listMedia = newListMedia as MutableList<Media>
+        listMedia.clear()
+        listMedia.addAll(newListMedia)
+        notifyDataSetChanged()
     }
 }

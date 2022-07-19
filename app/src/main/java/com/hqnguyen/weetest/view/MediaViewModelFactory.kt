@@ -1,9 +1,9 @@
-package com.hqnguyen.weetest.data
+package com.hqnguyen.weetest.view
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hqnguyen.weetest.view.MediaViewModel
+import com.hqnguyen.weetest.data.MediaRepository
 
 class MediaViewModelFactory constructor(
     private val repository: MediaRepository,
